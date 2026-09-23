@@ -2,13 +2,13 @@
 
 [![QA Regression](https://github.com/yamadaxu/swag-labs-qa-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/yamadaxu/swag-labs-qa-suite/actions/workflows/ci.yml)
 
-面向"测试实习生/测试开发"岗位的可讲项目：以 SauceLabs 官方演示商城
+以 SauceLabs 官方演示商城
 （Swag Labs, `https://www.saucedemo.com`）为被测系统，构建一整套
 Web 端到端回归体系，覆盖**用例设计、缺陷发现与归档、覆盖率、CI 集成**。
 
-## 定位与 JD 对应
+## 定位对应
 
-| JD 要求 | 本项目的落地 |
+|  要求 | 本项目的落地 |
 | --- | --- |
 | 发现产品缺陷、记录并跟踪修复 | `tests/test_bug_repro.py` + `bug_report.md`：3 条缺陷复现 + xfail 挂起跟踪 + CI 回归 |
 | 用户体验/反馈复现 | `problem_user` 加载失败图片、`error_user` 加购失效均为真实可复现的体验缺陷 |
@@ -56,7 +56,7 @@ docker compose up --build
   `sbase get chromedriver` 匹配驱动，无头跑回归并上传 reports 产物。
 - 缺陷用 `xfail` 挂起，不会让 CI 长期红灯；修复后解除即自动验证"bug 修复结果"。
 
-## 关键面试点
+## 核心点
 
 1. **用例设计**：等价类（用户名空/密码空/坏凭证）、边界（邮编 000000）、
    数据驱动（csv + parametrize）、业务闭环（浏览→加购→结算→致谢）。
