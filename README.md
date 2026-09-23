@@ -1,5 +1,7 @@
 # Web QA 自动化测试套件（SeleniumBase + POM + 数据驱动 + CI）
 
+[![QA Regression](https://github.com/yamadaxu/swag-labs-qa-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/yamadaxu/swag-labs-qa-suite/actions/workflows/ci.yml)
+
 面向"测试实习生/测试开发"岗位的可讲项目：以 SauceLabs 官方演示商城
 （Swag Labs, `https://www.saucedemo.com`）为被测系统，构建一整套
 Web 端到端回归体系，覆盖**用例设计、缺陷发现与归档、覆盖率、CI 集成**。
