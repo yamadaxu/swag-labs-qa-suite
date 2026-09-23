@@ -1,0 +1,32 @@
+name: QA Regression
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    # 官方镜像内置 Chromium + 各版本 driver，避免在 runner 上手装浏览器
+    container:
+      image: seleniumbase/ubuntu:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run regression suite (headless)
+        run: >
+          pytest tests/ --headless -m "not known_bug"
+          --html=reports/report.html --self-contained-html
+          --cov=pages --cov-report=html:reports/coverage
+          --cov-report=term
+
+      - name: Upload QA reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-reports
+          path: reports/

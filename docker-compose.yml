@@ -1,0 +1,16 @@
+services:
+  qa:
+    build: .
+    image: wps-qa-testsuite
+    volumes:
+      - ./reports:/qa/reports
+    command:
+      - pytest
+      - tests/
+      - --headless
+      - -m
+      - "not known_bug"
+      - --html=reports/report.html
+      - --self-contained-html
+      - --cov=pages
+      - --cov-report=html:reports/coverage

@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# SeleniumBase run artifacts
+latest_logs/
+test_suite.py
+
+# Test reports (generated locally / via CI, not committed)
+reports/
+.coverage
+coverage.json
+
+# OS
+.DS_Store
+Thumbs.db
+last_report.html

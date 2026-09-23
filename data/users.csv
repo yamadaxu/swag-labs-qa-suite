@@ -1,0 +1,7 @@
+username,password,expected,timeout,remark
+standard_user,secret_sauce,ok,10,
+locked_out_user,secret_sauce,locked,10,"BUG-002: 正常账号被锁定，无法登录"
+performance_glitch_user,secret_sauce,ok,45,"登录偶发卡顿，放宽超时验证"
+not_a_user,secret_sauce,bad_credentials,10,
+,secret_sauce,missing_username,10,"边界：用户名为空"
+standard_user,,missing_password,10,"边界：密码为空"

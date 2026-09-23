@@ -1,0 +1,6 @@
+first_name,last_name,postal_code,expect_success
+Mei,Wang,200000,yes
+Li,Chen,000000,yes
+Mei,Wang,,no
+,Wang,200000,no
+Mei,,200000,no
