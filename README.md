@@ -1,4 +1,4 @@
-# Web QA 自动化测试套件（SeleniumBase + POM + 数据驱动 + CI）
+﻿# Web QA 自动化测试套件（SeleniumBase + POM + 数据驱动 + CI）
 
 [![QA Regression](https://github.com/yamadaxu/swag-labs-qa-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/yamadaxu/swag-labs-qa-suite/actions/workflows/ci.yml)
 
@@ -24,7 +24,7 @@ testsuite/
   pages/            POM 页面对象（login/inventory/cart/checkout）
   data/             数据驱动文件（users.csv / checkout_data.csv）
   tests/            用例集：登录 / 商品 / 结算 / 缺陷复现
-  reports/          测试报告与覆盖率（运行后生成）
+  reports/          测试报告与覆盖率（运行后生成，不入库）
   bug_report.md     缺陷归档（跟踪表 + 复现步骤 + 根因假设）
   Dockerfile / docker-compose.yml
   .github/workflows/ci.yml
@@ -52,8 +52,8 @@ docker compose up --build
 
 ## CI（GitHub Actions）
 
-- 推送/PR 触发，使用官方 `seleniumbase/ubuntu` 镜像（内置浏览器与 driver），
-  无头跑回归并上传 reports 产物。
+- 推送/PR 触发：`ubuntu-latest` 上装 Python 依赖、Chrome（apt）与
+  `sbase get chromedriver` 匹配驱动，无头跑回归并上传 reports 产物。
 - 缺陷用 `xfail` 挂起，不会让 CI 长期红灯；修复后解除即自动验证"bug 修复结果"。
 
 ## 关键面试点

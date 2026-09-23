@@ -2,20 +2,30 @@ name: QA Regression
 
 on:
   push:
-    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   regression:
     runs-on: ubuntu-latest
-    # 官方镜像内置 Chromium + 各版本 driver，避免在 runner 上手装浏览器
-    container:
-      image: seleniumbase/ubuntu:latest
+    env:
+      PY_COLORS: "1"
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Install Chrome
+        run: sudo apt-get install -y google-chrome-stable
+
+      - name: Install chromedriver (matches Chrome)
+        run: sbase get chromedriver
 
       - name: Run regression suite (headless)
         run: >
@@ -25,8 +35,9 @@ jobs:
           --cov-report=term
 
       - name: Upload QA reports
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: qa-reports
           path: reports/
+          if-no-files-found: ignore
